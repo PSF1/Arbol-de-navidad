@@ -46,17 +46,9 @@ void lucesUpdate() {
 }
 
 void lucesStop() {
-    byte luces1;
-    byte luces2;
-    for (int i=0; i < 8; i++) {
-        bitClear(luces1, i);
-    }
-    for (int i=0; i < 8; i++) {
-        bitClear(luces2, i);
-    }
     digitalWrite(latchPin, LOW);
-    shiftOut(dataPin, clockPin, LSBFIRST, luces1);
-    shiftOut(dataPin, clockPin, LSBFIRST, luces2);
+    shiftOut(dataPin, clockPin, LSBFIRST, 0);
+    shiftOut(dataPin, clockPin, LSBFIRST, 0);
     digitalWrite(latchPin, HIGH);
 }
 
@@ -569,12 +561,12 @@ void we_wish_you_a_merry_christmas() {
 void loop() {
     jingle_bells();
     lucesStop();
-    pdelay(2000);
+    delay(2000);
     silent_night_pnt();
     lucesStop();
-    pdelay(2000);
+    delay(2000);
     we_wish_you_a_merry_christmas();
     lucesStop();
-    pdelay(2000);
+    delay(2000);
 }
 
